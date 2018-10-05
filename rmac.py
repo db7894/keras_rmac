@@ -15,6 +15,8 @@ import scipy.misc
 import numpy as np
 import utils
 
+from matplotlib import pyplot as plt
+
 
 def addition(x):
     sum = K.sum(x, axis=1)
@@ -81,7 +83,7 @@ if __name__ == "__main__":
     print('Original size: %s, Resized image: %s' %(str(img.size), str(new_size)))
     img = img.resize(new_size)
 
-    # Mean substraction
+    # Mean subtraction
     x = image.img_to_array(img)
     x = np.expand_dims(x, axis=0)
     x = utils.preprocess_image(x)
@@ -98,6 +100,10 @@ if __name__ == "__main__":
     print('RMAC shape: {}'.format(RMAC.shape))
 
     # Save RMAC as image
-    print('Saving RMAC as image...')
+    print('Saving plot of RMAC...')
+    ys = np.flatten(RMAC)
+    xs = np.arange(len(ys))
+    plt.plot(xs, ys)
+    plt.savefig("rmac.png")
     scipy.misc.imsave("./rmac.png", RMAC)
     print('Done!')
