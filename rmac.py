@@ -101,7 +101,7 @@ if __name__ == "__main__":
 
     # Save RMAC as image
     print('Saving plot of RMAC...')
-    ys = np.flatten(RMAC)
+    ys = RMAC.flatten()
     xs = np.arange(len(ys))
     plt.plot(xs, ys)
     plt.savefig("rmac.png")
