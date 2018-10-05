@@ -11,11 +11,8 @@ from RoiPooling import RoiPooling
 from get_regions import rmac_regions, get_size_vgg_feat_map
 
 import scipy.io
-import scipy.misc
 import numpy as np
 import utils
-
-from matplotlib import pyplot as plt
 
 
 def addition(x):
@@ -98,12 +95,5 @@ if __name__ == "__main__":
     print('Extracting RMAC from image...')
     RMAC = model.predict([x, np.expand_dims(regions, axis=0)])
     print('RMAC shape: {}'.format(RMAC.shape))
-
-    # Save RMAC as image
-    print('Saving plot of RMAC...')
-    ys = RMAC.flatten()
-    xs = np.arange(len(ys))
-    plt.plot(xs, ys)
-    plt.savefig("rmac.png")
-    scipy.misc.imsave("./rmac.png", RMAC)
+    print('RMAC stats: {}'.format(np.stats.describe(RMAC)))
     print('Done!')
