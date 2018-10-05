@@ -96,5 +96,6 @@ if __name__ == "__main__":
     print('Extracting RMAC from image...')
     RMAC = model.predict([x, np.expand_dims(regions, axis=0)])
     print('RMAC shape: {}'.format(RMAC.shape))
-    print('RMAC stats: {}'.format(scipy.stats.describe(RMAC)))
+    feats = RMAC.flatten()
+    print('RMAC stats: {}'.format(scipy.stats.describe(feats)))
     print('Done!')
