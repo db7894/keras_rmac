@@ -11,6 +11,7 @@ from RoiPooling import RoiPooling
 from get_regions import rmac_regions, get_size_vgg_feat_map
 
 import scipy.io
+import scipy.stats
 import numpy as np
 import utils
 
@@ -95,5 +96,5 @@ if __name__ == "__main__":
     print('Extracting RMAC from image...')
     RMAC = model.predict([x, np.expand_dims(regions, axis=0)])
     print('RMAC shape: {}'.format(RMAC.shape))
-    print('RMAC stats: {}'.format(np.stats.describe(RMAC)))
+    print('RMAC stats: {}'.format(scipy.stats.describe(RMAC)))
     print('Done!')
