@@ -95,6 +95,9 @@ if __name__ == "__main__":
     # Compute RMAC vector
     print('Extracting RMAC from image...')
     RMAC = model.predict([x, np.expand_dims(regions, axis=0)])
-    print('RMAC shape: %s' % RMAC.shape)
+    print('RMAC shape: {}'.format(RMAC.shape))
+
+    # Save RMAC as image
+    print('Saving RMAC as image...')
     scipy.misc.imsave("./rmac.png", RMAC)
     print('Done!')
